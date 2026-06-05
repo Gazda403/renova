@@ -150,7 +150,7 @@ function Navbar() {
             Re<span className="text-[#3B82F6]">Nova</span>
           </span>
           <span className="text-[9px] md:text-[10px] font-light tracking-[0.18em] text-white/40 uppercase mt-0.5">
-            Od zavjese do escajga
+            Od vizije do stvarnosti
           </span>
         </m.div>
 

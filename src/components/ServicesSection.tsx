@@ -613,7 +613,7 @@ export default function ServicesSection() {
                   Re<span style={{ color: ACCENT }}>Nova</span>
                 </span>
                 <p className="text-[9px] tracking-[0.22em] uppercase text-white/35 mt-1">
-                  Od zavjese do escajga
+                  Od vizije do stvarnosti
                 </p>
               </div>
 
