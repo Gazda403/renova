@@ -456,7 +456,7 @@ export default function AboutAndTransformations() {
                     >
                       {/* Metric value */}
                       <span
-                        className="font-black text-[2.25rem] leading-none w-[150px] shrink-0"
+                        className="font-black text-[2.25rem] leading-none w-[190px] shrink-0"
                         style={{
                           fontFamily:    "var(--font-display)",
                           color:         ACCENT_BLUE,
