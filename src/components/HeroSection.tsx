@@ -259,7 +259,7 @@ export default function HeroSection() {
             fill
             priority
             quality={90}
-            className="object-cover object-center"
+            className="object-cover object-bottom md:object-center"
             sizes="100vw"
           />
 
@@ -274,7 +274,7 @@ export default function HeroSection() {
             initial={{ opacity: 1 }}
             animate={{ opacity: videoEnded ? 0 : 1 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-bottom md:object-center"
           />
 
           {/* Gradient overlays for text legibility (lightened to show more video detail) */}
