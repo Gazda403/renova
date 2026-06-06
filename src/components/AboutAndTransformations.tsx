@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { LazyMotion, domMax, m, type Variants } from "framer-motion";
+import { LazyMotion, domMax, m, AnimatePresence, type Variants } from "framer-motion";
 
 /* ─── Design tokens ─── */
 const ACCENT_BLUE = "#3B82F6";
@@ -326,6 +326,233 @@ function SliderCard({
 }
 
 /* ═══════════════════════════════════════════════
+   Process step data
+═══════════════════════════════════════════════ */
+const PROCESS_STEPS = [
+  {
+    num: "01",
+    title: "Projektovanje & 3D Vizuelizacija",
+    desc: "Pretvaramo vaše ideje u fotorealistične 3D rendere, definišući svaki detalj prije početka radova.",
+    preview: (
+      /* Blueprint / wireframe grid */
+      <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0" style={{
+          backgroundImage: "linear-gradient(rgba(59,130,246,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.18) 1px, transparent 1px)",
+          backgroundSize: "18px 18px",
+        }} />
+        <div className="relative z-10 flex flex-col items-center gap-1">
+          <svg width="52" height="44" viewBox="0 0 52 44" fill="none">
+            <rect x="2" y="2" width="48" height="40" rx="3" stroke="#3B82F6" strokeWidth="1.5" strokeDasharray="4 3"/>
+            <line x1="2" y1="14" x2="50" y2="14" stroke="#3B82F6" strokeWidth="1" strokeDasharray="3 3" opacity="0.6"/>
+            <line x1="18" y1="14" x2="18" y2="42" stroke="#3B82F6" strokeWidth="1" strokeDasharray="3 3" opacity="0.6"/>
+            <rect x="6" y="18" width="8" height="6" rx="1" fill="rgba(59,130,246,0.25)" stroke="#3B82F6" strokeWidth="1"/>
+            <rect x="22" y="18" width="24" height="6" rx="1" fill="rgba(59,130,246,0.12)" stroke="#3B82F6" strokeWidth="0.8"/>
+            <rect x="6" y="28" width="8" height="10" rx="1" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" strokeWidth="1"/>
+            <rect x="22" y="28" width="24" height="10" rx="1" fill="rgba(59,130,246,0.08)" stroke="#3B82F6" strokeWidth="0.8"/>
+          </svg>
+          <span className="text-[9px] tracking-[0.22em] uppercase" style={{ color: "rgba(59,130,246,0.7)", fontFamily: "var(--font-body)" }}>Tlocrt</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    num: "02",
+    title: "Izvođenje Radova",
+    desc: "Koordinacija svih faza: od rušenja i instalacija do vrhunskih keramičkih i molerskih finiša uz stroge rokove.",
+    preview: (
+      /* Construction split */
+      <div className="w-full h-full flex flex-col items-center justify-center gap-2 p-3">
+        <div className="w-full flex gap-1.5 flex-1">
+          <div className="flex-1 rounded-md relative overflow-hidden" style={{ background: "rgba(120,90,60,0.25)", border: "1px solid rgba(120,90,60,0.4)" }}>
+            <div className="absolute inset-0" style={{
+              background: "repeating-linear-gradient(45deg, rgba(180,140,100,0.12) 0px, rgba(180,140,100,0.12) 4px, transparent 4px, transparent 12px)"
+            }} />
+            <span className="absolute bottom-1 left-1 text-[7px] tracking-widest uppercase" style={{ color: "rgba(200,160,100,0.8)", fontFamily: "var(--font-body)" }}>Beton</span>
+          </div>
+          <div className="flex-1 rounded-md relative overflow-hidden" style={{ background: "rgba(59,80,130,0.2)", border: "1px solid rgba(59,130,246,0.3)" }}>
+            <div className="absolute inset-0">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="absolute w-full" style={{ top: `${i * 25}%`, height: "24%", background: i % 2 === 0 ? "rgba(59,130,246,0.1)" : "transparent", borderTop: "1px solid rgba(59,130,246,0.2)" }} />
+              ))}
+            </div>
+            <span className="absolute bottom-1 left-1 text-[7px] tracking-widest uppercase" style={{ color: "rgba(100,160,246,0.8)", fontFamily: "var(--font-body)" }}>Keramika</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 w-full">
+          <div className="h-px flex-1" style={{ background: "rgba(249,115,22,0.4)" }} />
+          <span className="text-[7px] tracking-widest uppercase" style={{ color: "rgba(249,115,22,0.8)", fontFamily: "var(--font-body)" }}>Aktivan rad</span>
+          <div className="h-px flex-1" style={{ background: "rgba(249,115,22,0.4)" }} />
+        </div>
+      </div>
+    ),
+  },
+  {
+    num: "03",
+    title: "Ključ u Ruke",
+    desc: "Finalni dekor i detaljno čišćenje. Vaša vizija je u potpunosti materijalizovana u useljivu stvarnost.",
+    preview: (
+      /* Premium finish / recessed lighting */
+      <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" }} />
+        <div className="absolute top-3 left-0 right-0 flex justify-center gap-4">
+          {[0, 1, 2].map((i) => (
+            <div key={i} style={{
+              width: 20, height: 4,
+              borderRadius: 2,
+              background: "linear-gradient(90deg, transparent, rgba(255,220,120,0.9), transparent)",
+              boxShadow: "0 0 12px 4px rgba(255,200,80,0.35), 0 8px 20px 2px rgba(255,200,80,0.2)",
+            }} />
+          ))}
+        </div>
+        <div className="relative z-10 flex flex-col items-center gap-1.5">
+          <div style={{ width: 40, height: 40, borderRadius: "50%", border: "1px solid rgba(255,220,120,0.4)", background: "radial-gradient(circle, rgba(255,220,80,0.15), transparent)", boxShadow: "0 0 20px rgba(255,200,80,0.2)" }} />
+          <span className="text-[8px] tracking-[0.25em] uppercase" style={{ color: "rgba(255,220,120,0.7)", fontFamily: "var(--font-body)" }}>Premium finiš</span>
+        </div>
+      </div>
+    ),
+  },
+] as const;
+
+/* ═══════════════════════════════════════════════
+   ProcessTimeline sub-component
+═══════════════════════════════════════════════ */
+function ProcessTimeline() {
+  const [activeStep, setActiveStep] = useState<number>(0);
+
+  return (
+    <div className="flex flex-col gap-5 mt-2">
+      {/* ── Slogan heading ── */}
+      <div>
+        <p
+          className="text-[9px] font-black tracking-[0.32em] uppercase"
+          style={{ color: "#F97316", fontFamily: "var(--font-display)" }}
+        >
+          OD VIZIJE DO STVARNOSTI.
+        </p>
+        <div className="h-px bg-black/10 w-full mt-2 mb-0" />
+      </div>
+
+      {/* ── Timeline + preview layout ── */}
+      <div className="flex gap-3">
+
+        {/* Left: vertical track + steps */}
+        <div className="relative flex flex-col gap-0 flex-1">
+          {/* Vertical spine */}
+          <div
+            className="absolute left-[11px] top-4 bottom-4 w-px pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.04))" }}
+          />
+
+          {PROCESS_STEPS.map((step, i) => {
+            const isActive = activeStep === i;
+            return (
+              <m.button
+                key={step.num}
+                onClick={() => setActiveStep(i)}
+                onMouseEnter={() => setActiveStep(i)}
+                className="relative flex items-start gap-3 text-left px-0 py-3 cursor-pointer group"
+                style={{ background: "transparent", border: "none", outline: "none" }}
+                animate={{ opacity: isActive ? 1 : 0.45 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Node badge */}
+                <m.div
+                  className="relative z-10 flex items-center justify-center shrink-0 rounded-full text-[9px] font-black"
+                  style={{
+                    width: 22,
+                    height: 22,
+                    fontFamily: "var(--font-display)",
+                    marginTop: 1,
+                    border: isActive ? "1.5px solid #F97316" : "1.5px solid rgba(0,0,0,0.15)",
+                    background: isActive ? "rgba(249,115,22,0.12)" : "rgba(0,0,0,0.04)",
+                    color: isActive ? "#F97316" : "rgba(0,0,0,0.35)",
+                    transition: "all 0.3s ease",
+                    boxShadow: isActive ? "0 0 10px rgba(249,115,22,0.2)" : "none",
+                  }}
+                >
+                  {step.num}
+                </m.div>
+
+                {/* Step text */}
+                <div
+                  className="flex flex-col gap-0.5 rounded-xl px-3 py-2 flex-1"
+                  style={{
+                    background: isActive ? "rgba(249,115,22,0.04)" : "rgba(0,0,0,0.02)",
+                    border: isActive ? "1px solid rgba(249,115,22,0.15)" : "1px solid transparent",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  <span
+                    className="text-[10px] font-semibold leading-tight"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      color: isActive ? "#000" : "rgba(0,0,0,0.55)",
+                      transition: "color 0.3s ease",
+                    }}
+                  >
+                    {step.title}
+                  </span>
+                  <m.span
+                    className="text-[10px] font-light leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)", color: "rgba(0,0,0,0.45)" }}
+                    animate={{ opacity: isActive ? 1 : 0, height: isActive ? "auto" : 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    {step.desc}
+                  </m.span>
+                </div>
+              </m.button>
+            );
+          })}
+        </div>
+
+        {/* Right: floating asset preview box */}
+        <div
+          className="shrink-0 rounded-2xl overflow-hidden relative"
+          style={{
+            width: 100,
+            height: 140,
+            background: "rgba(0,0,0,0.05)",
+            border: "1px solid rgba(0,0,0,0.08)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <m.div
+              key={activeStep}
+              className="absolute inset-0"
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+            >
+              {PROCESS_STEPS[activeStep].preview}
+            </m.div>
+          </AnimatePresence>
+
+          {/* Step indicator dot */}
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 z-20">
+            {PROCESS_STEPS.map((_, i) => (
+              <div
+                key={i}
+                style={{
+                  width: i === activeStep ? 12 : 4,
+                  height: 3,
+                  borderRadius: 2,
+                  background: i === activeStep ? "#F97316" : "rgba(0,0,0,0.2)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════
    Main export — AboutAndTransformations section
 ═══════════════════════════════════════════════ */
 export default function AboutAndTransformations() {
@@ -500,6 +727,11 @@ export default function AboutAndTransformations() {
                       →
                     </span>
                   </a>
+                </m.div>
+
+                {/* ── Process Timeline ── */}
+                <m.div custom={0.44} variants={fadeUp}>
+                  <ProcessTimeline />
                 </m.div>
               </m.div>
             </div>
