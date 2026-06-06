@@ -360,29 +360,8 @@ const PROCESS_STEPS = [
     title: "Izvođenje Radova",
     desc: "Koordinacija svih faza: od rušenja i instalacija do vrhunskih keramičkih i molerskih finiša uz stroge rokove.",
     preview: (
-      /* Construction split */
-      <div className="w-full h-full flex flex-col items-center justify-center gap-2 p-3">
-        <div className="w-full flex gap-1.5 flex-1">
-          <div className="flex-1 rounded-md relative overflow-hidden" style={{ background: "rgba(120,90,60,0.25)", border: "1px solid rgba(120,90,60,0.4)" }}>
-            <div className="absolute inset-0" style={{
-              background: "repeating-linear-gradient(45deg, rgba(180,140,100,0.12) 0px, rgba(180,140,100,0.12) 4px, transparent 4px, transparent 12px)"
-            }} />
-            <span className="absolute bottom-1 left-1 text-[7px] tracking-widest uppercase" style={{ color: "rgba(200,160,100,0.8)", fontFamily: "var(--font-body)" }}>Beton</span>
-          </div>
-          <div className="flex-1 rounded-md relative overflow-hidden" style={{ background: "rgba(59,80,130,0.2)", border: "1px solid rgba(59,130,246,0.3)" }}>
-            <div className="absolute inset-0">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="absolute w-full" style={{ top: `${i * 25}%`, height: "24%", background: i % 2 === 0 ? "rgba(59,130,246,0.1)" : "transparent", borderTop: "1px solid rgba(59,130,246,0.2)" }} />
-              ))}
-            </div>
-            <span className="absolute bottom-1 left-1 text-[7px] tracking-widest uppercase" style={{ color: "rgba(100,160,246,0.8)", fontFamily: "var(--font-body)" }}>Keramika</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-1.5 w-full">
-          <div className="h-px flex-1" style={{ background: "rgba(59,130,246,0.4)" }} />
-          <span className="text-[7px] tracking-widest uppercase" style={{ color: "rgba(59,130,246,0.8)", fontFamily: "var(--font-body)" }}>Aktivan rad</span>
-          <div className="h-px flex-1" style={{ background: "rgba(59,130,246,0.4)" }} />
-        </div>
+      <div className="w-full h-full relative">
+        <Image src="/step2-radovi.jpeg" alt="Izvođenje Radova" fill sizes="200px" className="object-cover" />
       </div>
     ),
   },
@@ -391,23 +370,8 @@ const PROCESS_STEPS = [
     title: "Ključ u Ruke",
     desc: "Finalni dekor i detaljno čišćenje. Vaša vizija je u potpunosti materijalizovana u useljivu stvarnost.",
     preview: (
-      /* Premium finish / recessed lighting */
-      <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" }} />
-        <div className="absolute top-3 left-0 right-0 flex justify-center gap-4">
-          {[0, 1, 2].map((i) => (
-            <div key={i} style={{
-              width: 20, height: 4,
-              borderRadius: 2,
-              background: "linear-gradient(90deg, transparent, rgba(255,220,120,0.9), transparent)",
-              boxShadow: "0 0 12px 4px rgba(255,200,80,0.35), 0 8px 20px 2px rgba(255,200,80,0.2)",
-            }} />
-          ))}
-        </div>
-        <div className="relative z-10 flex flex-col items-center gap-1.5">
-          <div style={{ width: 40, height: 40, borderRadius: "50%", border: "1px solid rgba(255,220,120,0.4)", background: "radial-gradient(circle, rgba(255,220,80,0.15), transparent)", boxShadow: "0 0 20px rgba(255,200,80,0.2)" }} />
-          <span className="text-[8px] tracking-[0.25em] uppercase" style={{ color: "rgba(255,220,120,0.7)", fontFamily: "var(--font-body)" }}>Premium finiš</span>
-        </div>
+      <div className="w-full h-full relative">
+        <Image src="/step3-kljuc.png" alt="Ključ u Ruke" fill sizes="200px" className="object-cover" />
       </div>
     ),
   },
