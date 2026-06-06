@@ -564,8 +564,8 @@ export default function ContactAndFooter() {
               <Image
                 src="/Minimalist_and_creative_logo_design_202606061046.jpeg"
                 alt="AK Logo"
-                width={36}
-                height={20}
+                width={90}
+                height={50}
                 style={{ mixBlendMode: "screen" }}
                 className="opacity-60 hover:opacity-100 transition-opacity duration-200 object-contain"
               />
