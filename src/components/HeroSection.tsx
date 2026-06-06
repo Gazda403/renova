@@ -324,7 +324,7 @@ export default function HeroSection() {
                       Adaptacija
                     </span>
                     <span className="text-sm md:text-base font-medium tracking-[0.2em] text-white/50 uppercase md:pt-4">
-                      [ Osnovano 2015 ]
+                      [ Tradicija rada od 2015 ]
                     </span>
                   </m.div>
                 </div>
