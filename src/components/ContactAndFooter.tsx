@@ -562,12 +562,11 @@ export default function ContactAndFooter() {
                 Developed by
               </span>
               <Image
-                src="/Minimalist_and_creative_logo_design_202606061046.jpeg"
+                src="/ak-logo-gold.jpeg"
                 alt="AK Logo"
                 width={90}
                 height={50}
-                style={{ mixBlendMode: "screen" }}
-                className="opacity-60 hover:opacity-100 transition-opacity duration-200 object-contain"
+                className="opacity-70 hover:opacity-100 transition-opacity duration-200 object-contain rounded-lg"
               />
             </div>
 
