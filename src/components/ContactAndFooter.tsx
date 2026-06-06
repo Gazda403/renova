@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { LazyMotion, domMax, m, type Variants } from "framer-motion";
 import { Phone, Mail, Clock, MapPin, Send, X, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 /* ─── Design tokens ─── */
 const ACCENT      = "#3B82F6";
@@ -553,13 +554,22 @@ export default function ContactAndFooter() {
             />
 
             {/* Dev credit */}
-            <span
-              className="text-[11px] tracking-[0.18em] uppercase"
-              style={{ color: "rgba(255,255,255,0.18)", fontFamily: "var(--font-body)" }}
-            >
-              Developed by{" "}
-              <span style={{ color: "rgba(255,255,255,0.35)" }}>369solutions</span>
-            </span>
+            <div className="flex items-center gap-2">
+              <span
+                className="text-[11px] tracking-[0.18em] uppercase"
+                style={{ color: "rgba(255,255,255,0.18)", fontFamily: "var(--font-body)" }}
+              >
+                Developed by
+              </span>
+              <Image
+                src="/Minimalist_and_creative_logo_design_202606061046.jpeg"
+                alt="AK Logo"
+                width={36}
+                height={20}
+                style={{ mixBlendMode: "screen" }}
+                className="opacity-60 hover:opacity-100 transition-opacity duration-200 object-contain"
+              />
+            </div>
 
           </div>
         </div>
