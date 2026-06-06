@@ -379,9 +379,9 @@ const PROCESS_STEPS = [
           </div>
         </div>
         <div className="flex items-center gap-1.5 w-full">
-          <div className="h-px flex-1" style={{ background: "rgba(249,115,22,0.4)" }} />
-          <span className="text-[7px] tracking-widest uppercase" style={{ color: "rgba(249,115,22,0.8)", fontFamily: "var(--font-body)" }}>Aktivan rad</span>
-          <div className="h-px flex-1" style={{ background: "rgba(249,115,22,0.4)" }} />
+          <div className="h-px flex-1" style={{ background: "rgba(59,130,246,0.4)" }} />
+          <span className="text-[7px] tracking-widest uppercase" style={{ color: "rgba(59,130,246,0.8)", fontFamily: "var(--font-body)" }}>Aktivan rad</span>
+          <div className="h-px flex-1" style={{ background: "rgba(59,130,246,0.4)" }} />
         </div>
       </div>
     ),
@@ -420,26 +420,26 @@ function ProcessTimeline() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <div className="flex flex-col gap-5 mt-2">
+    <div className="flex flex-col gap-6 mt-4">
       {/* ── Slogan heading ── */}
       <div>
         <p
-          className="text-[9px] font-black tracking-[0.32em] uppercase"
-          style={{ color: "#F97316", fontFamily: "var(--font-display)" }}
+          className="text-xs font-black tracking-[0.32em] uppercase"
+          style={{ color: ACCENT_BLUE, fontFamily: "var(--font-display)" }}
         >
           OD VIZIJE DO STVARNOSTI.
         </p>
-        <div className="h-px bg-black/10 w-full mt-2 mb-0" />
+        <div className="h-px bg-black/10 w-full mt-3 mb-0" />
       </div>
 
       {/* ── Timeline + preview layout ── */}
-      <div className="flex gap-3">
+      <div className="flex gap-4 sm:gap-6 items-center">
 
         {/* Left: vertical track + steps */}
-        <div className="relative flex flex-col gap-0 flex-1">
+        <div className="relative flex flex-col gap-1 flex-1">
           {/* Vertical spine */}
           <div
-            className="absolute left-[11px] top-4 bottom-4 w-px pointer-events-none"
+            className="absolute left-[15px] top-4 bottom-4 w-px pointer-events-none"
             style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.04))" }}
           />
 
@@ -450,24 +450,24 @@ function ProcessTimeline() {
                 key={step.num}
                 onClick={() => setActiveStep(i)}
                 onMouseEnter={() => setActiveStep(i)}
-                className="relative flex items-start gap-3 text-left px-0 py-3 cursor-pointer group"
+                className="relative flex items-start gap-4 text-left px-0 py-3 cursor-pointer group"
                 style={{ background: "transparent", border: "none", outline: "none" }}
                 animate={{ opacity: isActive ? 1 : 0.45 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 {/* Node badge */}
                 <m.div
-                  className="relative z-10 flex items-center justify-center shrink-0 rounded-full text-[9px] font-black"
+                  className="relative z-10 flex items-center justify-center shrink-0 rounded-full text-xs sm:text-sm font-black"
                   style={{
-                    width: 22,
-                    height: 22,
+                    width: 32,
+                    height: 32,
                     fontFamily: "var(--font-display)",
-                    marginTop: 1,
-                    border: isActive ? "1.5px solid #F97316" : "1.5px solid rgba(0,0,0,0.15)",
-                    background: isActive ? "rgba(249,115,22,0.12)" : "rgba(0,0,0,0.04)",
-                    color: isActive ? "#F97316" : "rgba(0,0,0,0.35)",
+                    marginTop: 2,
+                    border: isActive ? `1.5px solid ${ACCENT_BLUE}` : "1.5px solid rgba(0,0,0,0.15)",
+                    background: isActive ? "rgba(59,130,246,0.12)" : "rgba(0,0,0,0.04)",
+                    color: isActive ? ACCENT_BLUE : "rgba(0,0,0,0.35)",
                     transition: "all 0.3s ease",
-                    boxShadow: isActive ? "0 0 10px rgba(249,115,22,0.2)" : "none",
+                    boxShadow: isActive ? "0 0 10px rgba(59,130,246,0.2)" : "none",
                   }}
                 >
                   {step.num}
@@ -475,15 +475,15 @@ function ProcessTimeline() {
 
                 {/* Step text */}
                 <div
-                  className="flex flex-col gap-0.5 rounded-xl px-3 py-2 flex-1"
+                  className="flex flex-col gap-1 rounded-xl px-4 py-2 sm:py-3 flex-1"
                   style={{
-                    background: isActive ? "rgba(249,115,22,0.04)" : "rgba(0,0,0,0.02)",
-                    border: isActive ? "1px solid rgba(249,115,22,0.15)" : "1px solid transparent",
+                    background: isActive ? "rgba(59,130,246,0.04)" : "rgba(0,0,0,0.02)",
+                    border: isActive ? "1px solid rgba(59,130,246,0.15)" : "1px solid transparent",
                     transition: "all 0.3s ease",
                   }}
                 >
                   <span
-                    className="text-[10px] font-semibold leading-tight"
+                    className="text-[13px] sm:text-[15px] font-semibold leading-tight"
                     style={{
                       fontFamily: "var(--font-body)",
                       color: isActive ? "#000" : "rgba(0,0,0,0.55)",
@@ -493,7 +493,7 @@ function ProcessTimeline() {
                     {step.title}
                   </span>
                   <m.span
-                    className="text-[10px] font-light leading-relaxed"
+                    className="text-[11px] sm:text-[13px] font-light leading-relaxed"
                     style={{ fontFamily: "var(--font-body)", color: "rgba(0,0,0,0.45)" }}
                     animate={{ opacity: isActive ? 1 : 0, height: isActive ? "auto" : 0 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
@@ -510,8 +510,8 @@ function ProcessTimeline() {
         <div
           className="shrink-0 rounded-2xl overflow-hidden relative"
           style={{
-            width: 100,
-            height: 140,
+            width: 140,
+            height: 190,
             background: "rgba(0,0,0,0.05)",
             border: "1px solid rgba(0,0,0,0.08)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
@@ -520,7 +520,7 @@ function ProcessTimeline() {
           <AnimatePresence mode="wait">
             <m.div
               key={activeStep}
-              className="absolute inset-0"
+              className="absolute inset-0 flex items-center justify-center scale-[1.25]"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
@@ -531,15 +531,15 @@ function ProcessTimeline() {
           </AnimatePresence>
 
           {/* Step indicator dot */}
-          <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 z-20">
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-20">
             {PROCESS_STEPS.map((_, i) => (
               <div
                 key={i}
                 style={{
-                  width: i === activeStep ? 12 : 4,
-                  height: 3,
+                  width: i === activeStep ? 16 : 6,
+                  height: 4,
                   borderRadius: 2,
-                  background: i === activeStep ? "#F97316" : "rgba(0,0,0,0.2)",
+                  background: i === activeStep ? ACCENT_BLUE : "rgba(0,0,0,0.2)",
                   transition: "all 0.3s ease",
                 }}
               />
