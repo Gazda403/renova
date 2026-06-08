@@ -277,9 +277,7 @@ export default function HeroSection() {
             className="absolute inset-0 w-full h-full object-cover object-bottom md:object-center"
           />
 
-          {/* Gradient overlays for text legibility (lightened to show more video detail) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0C0E]/50 via-[#0B0C0E]/20 to-[#0B0C0E]/75" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0C0E]/55 via-transparent to-[#0B0C0E]/10" />
+          {/* Gradient overlays removed to make video fully clear and remove black tint */}
         </div>
 
         {/* ─── Navbar ─── */}
