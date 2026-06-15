@@ -180,11 +180,11 @@ function Navbar() {
           className="hidden md:flex items-center gap-3"
         >
           <a
-            href="tel:+38761000000"
+            href="tel:+38766057780"
             className="flex items-center gap-2 text-[11px] font-medium tracking-[0.14em] uppercase text-white/60 hover:text-[#3B82F6] transition-all duration-300 ease-in-out"
           >
             <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
-            Pozovi
+            +387 66 057 780
           </a>
           <a
             href="#kontakt"
@@ -255,7 +255,7 @@ export default function HeroSection() {
           {/* Static Hero Image — always underneath */}
           <Image
             src="/hero-image.png"
-            alt="Renoviran prostor — ReNova"
+            alt="Moderno renoviran stan u Sarajevu — ReNova kompletna adaptacija ključ u ruke"
             fill
             priority
             quality={90}
@@ -298,6 +298,11 @@ export default function HeroSection() {
 
                 {/* Display headline */}
                 <div className="flex flex-col">
+                  {/*
+                    H1 carries the primary brand + service keyword.
+                    Visual size comes from CSS; "RENOVA" and "Adaptacija" are
+                    part of the same heading unit for screen readers.
+                  */}
                   <m.h1
                     custom={0.5}
                     variants={slideLeft}
@@ -322,12 +327,12 @@ export default function HeroSection() {
                       Adaptacija
                     </span>
                     <span className="text-sm md:text-base font-medium tracking-[0.2em] text-white/50 uppercase md:pt-4">
-                      [ Tradicija rada od 2015 ]
+                      [ Sarajevo &amp; Pale — od 2015 ]
                     </span>
                   </m.div>
                 </div>
 
-                {/* Value proposition */}
+                {/* Value proposition — local keywords woven naturally */}
                 <m.p
                   custom={0.9}
                   variants={fadeUp}
@@ -336,7 +341,7 @@ export default function HeroSection() {
                   className="max-w-xl text-xs md:text-sm font-light leading-relaxed text-white/70 uppercase tracking-wide mt-4"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Kompletne usluge adaptacije stanova i poslovnih prostora. Od ideje do useljenja — vrhunski materijali, jasni rokovi i stopostotna garancija. Naša vizija je jednostavna: stvoriti prostore koji inspirišu, pružaju komfor i podižu kvalitet svakodnevnog života.
+                  Kompletne usluge adaptacije stanova i poslovnih prostora u Sarajevu, Palama i Jahorini. Od ideje do useljenja ključ u ruke — vrhunski materijali, jasni rokovi i stopostotna garancija kvaliteta.
                 </m.p>
 
               </div>
@@ -367,7 +372,7 @@ export default function HeroSection() {
                   className="flex items-center gap-4"
                 >
                   <span className="text-lg md:text-2xl font-light tracking-wide text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
-                    SARAJEVO — KOMPLETNA ADAPTACIJA
+                    SARAJEVO · PALE · JAHORINA
                   </span>
                 </m.div>
 
@@ -375,8 +380,7 @@ export default function HeroSection() {
                   variants={fadeUp}
                   className="text-[10px] md:text-xs font-light leading-relaxed text-white/60 uppercase tracking-wide max-w-lg"
                 >
-                  Moderne i održive metode gradnje sa provjerenim materijalima. 
-                  Projekti po sistemu "ključ u ruke" uz potpunu posvećenost kvaliteti i rokovima.
+                  Adaptacija stanova i poslovnih prostora ključ u ruke — Sarajevo, Pale, Jahorina i Istočno Sarajevo. Provjereni materijali, jasni rokovi, garancija na sve radove.
                 </m.p>
 
                 {/* Metric numbers */}

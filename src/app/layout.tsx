@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, Bebas_Neue } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 // Ultra-heavy condensed display font — used for the giant "RENOVA" heading
@@ -26,15 +27,173 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "ReNova — Kompletna Adaptacija Stanova i Poslovnih Prostora",
+/* ─── Production domain ─── */
+const SITE_URL = "https://www.renovabih.com";
+
+/* ─── JSON-LD LocalBusiness structured data ─── */
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  name: "ReNova",
   description:
-    "ReNova nudi kompletne usluge adaptacije stanova i poslovnih prostora u Sarajevu, Jahorini, Palama i okolini. Od ideje do useljenja — vrhunski materijali, jasni rokovi i garancija kvaliteta.",
-  keywords: ["adaptacija", "renovacija", "Sarajevo", "stanovi", "poslovni prostori", "ReNova"],
+    "Kompletna adaptacija stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Usluge ključ u ruke — molerski radovi, keramika, električne instalacije.",
+  url: SITE_URL,
+  telephone: "+38766057780",
+  email: "info@renovabih.com",
+  logo: `${SITE_URL}/brand-logo.jpeg`,
+  image: `${SITE_URL}/hero-image.png`,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Dobrovoljnih davalaca krvi 21",
+    addressLocality: "Pale",
+    addressRegion: "Republika Srpska",
+    postalCode: "71420",
+    addressCountry: "BA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.8184,
+    longitude: 18.5693,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+  ],
+  areaServed: [
+    { "@type": "City", name: "Sarajevo" },
+    { "@type": "City", name: "Pale" },
+    { "@type": "City", name: "Jahorina" },
+    { "@type": "City", name: "Istočno Sarajevo" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Usluge Adaptacije",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Kompletna Adaptacija Stanova (Ključ u Ruke)",
+          description:
+            "Cjelovita adaptacija od rušenja do finišnih radova. Sarajevo, Pale, Jahorina.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Molerski Radovi",
+          description:
+            "Profesionalno bojanje, gletanje i dekorativne teksture za stanove i poslovne prostore.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Keramika i Podne Obloge",
+          description:
+            "Ugradnja keramike, gresa, parketa i vinila — precizno i trajno.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Elektroinstalacije i Rasvjeta",
+          description:
+            "Kompletne elektroinstalaterske usluge po EU standardima.",
+        },
+      },
+    ],
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "500",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  sameAs: [],
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+
+  /* ─── Title ─── */
+  title: {
+    default:
+      "ReNova — Adaptacija Stanova Sarajevo, Pale, Jahorina | Ključ u Ruke",
+    template: "%s | ReNova Adaptacije",
+  },
+
+  /* ─── Meta description ─── */
+  description:
+    "ReNova izvodi kompletnu adaptaciju stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Ključ u ruke rješenje — molerski radovi, keramika, elektrika. Besplatna procjena: +387 66 057 780.",
+
+  /* ─── Keywords ─── */
+  keywords: [
+    "adaptacija stanova Sarajevo",
+    "renovacija stanova Pale",
+    "ključ u ruke Jahorina",
+    "adaptacija stanova Istočno Sarajevo",
+    "molerski radovi Sarajevo",
+    "keramika i podovi Sarajevo",
+    "elektroinstalacije Pale",
+    "adaptacija poslovnih prostora BiH",
+    "ReNova Pale",
+    "renovabih",
+  ],
+
+  /* ─── Canonical ─── */
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  /* ─── Open Graph ─── */
   openGraph: {
-    title: "ReNova — Ključ U Ruke",
-    description: "Kompletne usluge adaptacije stanova i poslovnih prostora. Od ideje do useljenja.",
+    title:
+      "ReNova — Kompletna Adaptacija Stanova Sarajevo, Pale & Jahorina",
+    description:
+      "Adaptacija stanova i poslovnih prostora po sistemu ključ u ruke. Sarajevo, Pale, Jahorina, Istočno Sarajevo. 500+ završenih projekata. Besplatna procjena!",
     type: "website",
+    url: SITE_URL,
+    siteName: "ReNova",
+    locale: "bs_BA",
+    images: [
+      {
+        url: `${SITE_URL}/hero-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "ReNova — Renoviran stan u Sarajevu, kompletna adaptacija ključ u ruke",
+      },
+    ],
+  },
+
+  /* ─── Twitter / X card ─── */
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "ReNova — Adaptacija Stanova Sarajevo & Pale | Ključ u Ruke",
+    description:
+      "Kompletne renovacije u Sarajevu, Palama i Jahorini. Molerski radovi, keramika, elektrika. Besplatna procjena!",
+    images: [`${SITE_URL}/hero-image.png`],
+  },
+
+  /* ─── Robots ─── */
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
 };
 
@@ -50,6 +209,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="bs" className={`${bebasNeue.variable} ${outfit.variable} ${inter.variable}`}>
+      <head>
+        {/* JSON-LD LocalBusiness structured data */}
+        <Script
+          id="local-business-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+      </head>
       <body className="antialiased bg-[#080A0F] text-white overflow-x-hidden">
         {children}
       </body>

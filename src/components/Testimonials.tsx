@@ -216,7 +216,7 @@ export default function Testimonials() {
               className="text-[9.5px] font-bold tracking-[0.35em] uppercase"
               style={{ color: ACCENT, fontFamily: "var(--font-body)" }}
             >
-              Utisci Klijenata
+              Utisci Klijenata — Sarajevo, Pale &amp; BiH
             </span>
           </div>
 

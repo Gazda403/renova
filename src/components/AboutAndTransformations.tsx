@@ -35,8 +35,8 @@ const PROJECTS: SliderProject[] = [
     subtitle:  "Kompletna adaptacija i uređenje",
     beforeSrc: "/new-segment-before.jpeg",
     afterSrc:  "/new-segment-after.jpeg",
-    beforeAlt: "Dnevna soba prije adaptacije",
-    afterAlt:  "Luksuzna dnevna soba poslije adaptacije",
+    beforeAlt: "Dnevna soba prije adaptacije — renovacija stana Sarajevo",
+    afterAlt:  "Luksuzna dnevna soba poslije kompletne adaptacije — ReNova ključ u ruke",
   },
   {
     id:        "molerski",
@@ -45,8 +45,8 @@ const PROJECTS: SliderProject[] = [
     subtitle:  "Dekorativne teksture i premium finiš",
     beforeSrc: "/segment2-before.jpeg",
     afterSrc:  "/segment2-after.jpeg",
-    beforeAlt: "Prostor prije molerskih radova",
-    afterAlt:  "Prostor poslije molerskih radova",
+    beforeAlt: "Zidovi prije molerskih radova — adaptacija Pale",
+    afterAlt:  "Završeni molerski radovi dekorativne teksture — ReNova Sarajevo",
   },
   {
     id:        "keramika",
@@ -55,8 +55,8 @@ const PROJECTS: SliderProject[] = [
     subtitle:  "Premium podne obloge i oblaganje",
     beforeSrc: "/seg3-before.jpeg",
     afterSrc:  "/seg3-after.jpeg",
-    beforeAlt: "Pod prije ugradnje keramike",
-    afterAlt:  "Premium mramorni pod poslije ugradnje",
+    beforeAlt: "Pod prije ugradnje keramike — stara obloga Sarajevo",
+    afterAlt:  "Premium keramika i mramorni pod poslije ugradnje — ReNova Jahorina",
   },
 ];
 
@@ -580,7 +580,7 @@ export default function AboutAndTransformations() {
                     className="text-[9.5px] font-bold tracking-[0.35em] uppercase"
                     style={{ color: ACCENT_BLUE, fontFamily: "var(--font-body)" }}
                   >
-                    O Nama — Profesionalna Adaptacija
+                    O Nama — Adaptacije Sarajevo &amp; Pale
                   </span>
                 </m.div>
 
@@ -625,9 +625,7 @@ export default function AboutAndTransformations() {
                   className="text-[15px] font-light leading-[1.85] text-black/70 max-w-[420px]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Iskusni majstori sa godinama rada u adaptacijama stanova. Radimo
-                  s jasnim rokovima i garancijom. Naši klijenti su vlasnici
-                  stanova, investitori i agencije za nekretnine.
+                  Iskusni majstori sa više od 10 godina rada u adaptacijama stanova u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Radimo s jasnim rokovima, garancijom na sve radove i potpunom transparentnošću troškova. Naši klijenti su vlasnici stanova, investitori i agencije za nekretnine.
                 </m.p>
 
                 {/* ── Metrics strip ── */}

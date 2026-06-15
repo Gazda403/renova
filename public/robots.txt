@@ -1,0 +1,11 @@
+# https://www.renovabih.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block Next.js internals from indexing
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.renovabih.com/sitemap.xml

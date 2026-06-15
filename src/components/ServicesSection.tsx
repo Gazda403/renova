@@ -36,11 +36,11 @@ const OUTER_RADIUS = 44;
 const SERVICES: Service[] = [
   {
     id: "adaptacija",
-    title: "Kompletna Adaptacija",
+    title: "Kompletna Adaptacija Sarajevo",
     subtitle: "Ključ u ruke rješenje",
     description: "Demontaža, izvedba i završna obrada.",
     detail:
-      "Od prve linije projekta do finalnog useljenja. Potpuno vodimo sve faze: rušenje, zidanje, izolaciju, gletanje i završni finiš. Jasni rokovi, transparentni troškovi i garancija izvođenja.",
+      "Od prve linije projekta do finalnog useljenja — Sarajevo, Pale, Jahorina i Istočno Sarajevo. Potpuno vodimo sve faze: rušenje, zidanje, izolaciju, gletanje i završni finiš. Jasni rokovi, transparentni troškovi i garancija izvršenja.",
     icon: "◈",
     stat: "500+",
     statLabel: "projekata završeno",
@@ -308,7 +308,7 @@ function ExpandedPanel({ service }: { service: Service }) {
         {service.image ? (
           <Image
             src={service.image}
-            alt={service.title}
+            alt={`${service.title} — ReNova usluge adaptacije u Sarajevu`}
             fill
             sizes="(max-width: 768px) 100vw, 460px"
             className="object-cover object-center transition-transform duration-700 hover:scale-105"
@@ -458,7 +458,7 @@ export default function ServicesSection() {
               className="text-[10px] font-medium tracking-[0.32em] uppercase"
               style={{ color: ACCENT }}
             >
-              Naše Usluge
+              Naše Usluge — Sarajevo, Pale, Jahorina
             </span>
             <div className="w-6 h-[1px]" style={{ background: ACCENT }} />
           </m.div>

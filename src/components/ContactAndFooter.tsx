@@ -208,7 +208,7 @@ export default function ContactAndFooter() {
                   className="text-[9px] font-bold tracking-[0.38em] uppercase"
                   style={{ color: "rgba(201,185,154,0.7)", fontFamily: "var(--font-body)" }}
                 >
-                  Kontakt — Zatražite Besplatnu Procjenu
+                  Kontakt — Besplatna Procjena | Sarajevo &amp; Pale
                 </span>
               </m.div>
 
