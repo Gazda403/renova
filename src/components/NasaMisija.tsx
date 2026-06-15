@@ -3,7 +3,7 @@
 import { LazyMotion, domMax, m, Variants } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.25, 1, 0.5, 1];
-const GOLD = "#D4AF37";
+const ACCENT_BLUE = "#3B82F6";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -48,13 +48,31 @@ const PILLARS = [
 export default function NasaMisija() {
   return (
     <LazyMotion features={domMax} strict>
-      <section className="relative w-full overflow-hidden bg-[#080A0F] text-white py-24 md:py-32">
+      <section 
+        className="relative w-full overflow-hidden text-black py-24 md:py-32"
+        style={{
+          background: "linear-gradient(135deg, #dbeafe 0%, #eff6ff 30%, #e0ecff 65%, #eaf2ff 100%)",
+        }}
+      >
         {/* Ambient top glow */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.08) 0%, transparent 60%)"
+            background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)"
+          }}
+        />
+
+        {/* ── Top divider ── */}
+        <m.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, ease: EASE }}
+          className="absolute top-0 left-0 right-0 h-px origin-center pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(59,130,246,0.35) 30%, rgba(0,0,0,0.12) 50%, rgba(59,130,246,0.35) 70%, transparent)",
           }}
         />
 
@@ -71,10 +89,10 @@ export default function NasaMisija() {
               <div className="flex flex-col gap-6 flex-1 max-w-[800px]">
                 {/* Eyebrow */}
                 <m.div variants={fadeUp} className="flex items-center gap-4">
-                  <div className="w-8 h-[2px]" style={{ background: GOLD }} />
+                  <div className="w-8 h-[2px]" style={{ background: ACCENT_BLUE }} />
                   <span
                     className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase"
-                    style={{ color: GOLD, fontFamily: "var(--font-body)" }}
+                    style={{ color: ACCENT_BLUE, fontFamily: "var(--font-body)" }}
                   >
                     Naša Misija
                   </span>
@@ -83,10 +101,10 @@ export default function NasaMisija() {
                 {/* Main Quote */}
                 <m.h2
                   variants={fadeUp}
-                  className="text-2xl md:text-3xl lg:text-[2.5rem] leading-[1.3] font-light text-white/90"
+                  className="text-2xl md:text-3xl lg:text-[2.5rem] leading-[1.3] font-light text-black/90"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  "Naša misija je da vaše snove pretvorimo u stvarnost. Od najmanjih detalja i najjednostavnijih usluga do kompleksnih projekata i potpunih adaptacija — naš cilj je da rezultat našeg rada <span className="font-semibold" style={{ color: GOLD }}>ostavi osmijeh na vašem licu</span>."
+                  "Naša misija je da vaše snove pretvorimo u stvarnost. Od najmanjih detalja i najjednostavnijih usluga do kompleksnih projekata i potpunih adaptacija — naš cilj je da rezultat našeg rada <span className="font-semibold" style={{ color: ACCENT_BLUE }}>ostavi osmijeh na vašem licu</span>."
                 </m.h2>
               </div>
             </div>
@@ -97,16 +115,18 @@ export default function NasaMisija() {
                 <m.div
                   key={idx}
                   variants={fadeUp}
-                  className="flex flex-col gap-6 p-8 rounded-2xl group relative overflow-hidden"
+                  className="flex flex-col gap-6 p-8 rounded-2xl group relative overflow-hidden transition-all duration-500 hover:shadow-lg"
                   style={{
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    background: "rgba(255,255,255,0.4)",
+                    border: "1px solid rgba(255,255,255,0.6)",
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
                   }}
                 >
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                     style={{
-                      background: "radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 70%)"
+                      background: "radial-gradient(circle at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 70%)"
                     }}
                   />
                   
@@ -114,9 +134,9 @@ export default function NasaMisija() {
                   <div
                     className="flex items-center justify-center rounded-xl w-14 h-14 shrink-0 transition-transform duration-700 group-hover:scale-110"
                     style={{
-                      background: "rgba(212,175,55,0.1)",
-                      color: GOLD,
-                      border: "1px solid rgba(212,175,55,0.2)"
+                      background: "rgba(59,130,246,0.1)",
+                      color: ACCENT_BLUE,
+                      border: "1px solid rgba(59,130,246,0.2)"
                     }}
                   >
                     {pillar.icon}
@@ -124,13 +144,13 @@ export default function NasaMisija() {
 
                   <div className="flex flex-col gap-3 relative z-10">
                     <h3
-                      className="text-xl font-medium tracking-wide text-white"
+                      className="text-xl font-semibold tracking-wide text-black"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {pillar.title}
                     </h3>
                     <p
-                      className="text-[15px] leading-[1.7] text-white/50 font-light"
+                      className="text-[15px] leading-[1.7] text-black/60 font-light"
                       style={{ fontFamily: "var(--font-body)" }}
                     >
                       {pillar.desc}
