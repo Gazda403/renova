@@ -122,6 +122,62 @@ const localBusinessJsonLd = {
   sameAs: [],
 };
 
+/* ─── JSON-LD FAQ structured data ─── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Koliko košta adaptacija stana u Sarajevu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Cijena adaptacije stana u Sarajevu ovisi o veličini prostora i obimu radova. Kompletna adaptacija ključ u ruke za stan od 60 m² kreće se od 25.000 KM naviše. Nudimo besplatnu procjenu na +387 66 057 780.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Da li radite adaptacije u Palama, Jahorini i Istočnom Sarajevu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Da — izvodimo radove u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Naša baza je u Palama, što nam omogućava brz odaziv na cijelom tom području.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Šta uključuje paket ključ u ruke?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Paket ključ u ruke pokriva sve faze adaptacije: demolaciju, građevinske radove, elektroinstalacije, vodovodne instalacije, gletanje i bojanje zidova, keramiku, podne obloge, montažu vrata i finalno čišćenje.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Koliko traje kompletna adaptacija stana?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Adaptacija stana od 50–80 m² traje 6–10 sedmica. Svaki projekat dobija precizan terminski plan i držimo se dogovorenih rokova.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Da li dajete garanciju na izvedene radove?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Da — ReNova daje pisanu garanciju na sve izvedene radove. U slučaju reklamacije, naš tim dolazi bez odlaganja i rješava problem bez dodatnih troškova za klijenta.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Radite li i poslovne prostore i kancelarije?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Apsolutno. ReNova adaptira poslovne prostore, kancelarije, restorane i maloprodajne objekte u Sarajevu i okolini, uključujući i radove vikendom kako ne bismo ometali poslovanje.",
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
@@ -153,6 +209,14 @@ export const metadata: Metadata = {
   /* ─── Canonical ─── */
   alternates: {
     canonical: SITE_URL,
+  },
+
+  /* ─── Geo meta tags ─── */
+  other: {
+    "geo.region": "BA-SRP",
+    "geo.placename": "Pale, Bosnia and Herzegovina",
+    "geo.position": "43.8184;18.5693",
+    ICBM: "43.8184, 18.5693",
   },
 
   /* ─── Open Graph ─── */
@@ -210,12 +274,22 @@ export default function RootLayout({
   return (
     <html lang="bs" className={`${bebasNeue.variable} ${outfit.variable} ${inter.variable}`}>
       <head>
-        {/* JSON-LD LocalBusiness structured data */}
+        {/* Preconnect to Google Fonts for faster LCP */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* LocalBusiness JSON-LD */}
         <Script
           id="local-business-jsonld"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        {/* FAQ JSON-LD */}
+        <Script
+          id="faq-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>
       <body className="antialiased bg-[#080A0F] text-white overflow-x-hidden">

@@ -547,6 +547,13 @@ export default function ContactAndFooter() {
               </span>
             </div>
 
+            {/* Semantic Address (NAP) - visually hidden but available to screen readers/crawlers */}
+            <address className="sr-only">
+              ReNova — Dobrovoljnih davalaca krvi 21, Pale, Bosna i Hercegovina<br/>
+              <a href="tel:+38766057780">+387 66 057 780</a><br/>
+              <a href="mailto:info@renovabih.com">info@renovabih.com</a>
+            </address>
+
             {/* Separator dot — hidden on mobile */}
             <div
               className="hidden md:block w-1 h-1 rounded-full"

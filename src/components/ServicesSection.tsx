@@ -312,7 +312,6 @@ function ExpandedPanel({ service }: { service: Service }) {
             fill
             sizes="(max-width: 768px) 100vw, 460px"
             className="object-cover object-center transition-transform duration-700 hover:scale-105"
-            priority
           />
         ) : (
           <>
