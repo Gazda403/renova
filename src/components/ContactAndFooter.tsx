@@ -38,7 +38,7 @@ const scaleIn: Variants = {
 /* ─── Contact meta items ─── */
 const META = [
   { Icon: Phone,  label: "Telefon",       value: "+387 66 057 780",       href: "tel:+38766057780" },
-  { Icon: Mail,   label: "Email",         value: "info@renovabih.com",     href: "mailto:info@renovabih.com" },
+  { Icon: Mail,   label: "Email",         value: "renovabih@gmail.com",    href: "mailto:renovabih@gmail.com" },
   { Icon: Clock,  label: "Radno Vrijeme", value: "Pon–Pet  08:00 — 18:00", href: null },
   { Icon: MapPin, label: "Lokacija",      value: "Dobrovoljnih davalaca krvi 21, Pale", href: "https://maps.google.com/?q=Dobrovoljnih+davalaca+krvi+21,+Pale" },
 ];
@@ -556,6 +556,54 @@ export default function ContactAndFooter() {
                     </m.p>
                   </form>
                 )}
+
+                {/* Instagram Link Section */}
+                <div className="w-full h-px my-6" style={{ background: "rgba(255,255,255,0.06)" }} />
+                <m.div
+                  custom={0.54}
+                  variants={fadeIn}
+                  className="flex flex-col sm:flex-row items-center justify-between gap-4"
+                >
+                  <span
+                    className="text-[12px] font-medium text-white/40 uppercase tracking-widest"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Pratite naše radove uživo
+                  </span>
+                  <a
+                    href="https://www.instagram.com/renova_bih/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-xl transition-all duration-300 w-full sm:w-auto justify-center"
+                    style={{
+                      padding: "10px 18px",
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      color: "#fff",
+                      fontSize: 12,
+                      fontFamily: "var(--font-body)",
+                      letterSpacing: "0.08em",
+                      fontWeight: 600,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)";
+                      e.currentTarget.style.borderColor = "transparent";
+                      e.currentTarget.style.boxShadow = "0 8px 24px rgba(220, 39, 67, 0.35)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                  >
+                    <svg width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                    <span>@renova_bih</span>
+                  </a>
+                </m.div>
               </m.div>
             </m.div>
 
@@ -600,7 +648,7 @@ export default function ContactAndFooter() {
             <address className="sr-only">
               ReNova — Dobrovoljnih davalaca krvi 21, Pale, Bosna i Hercegovina<br/>
               <a href="tel:+38766057780">+387 66 057 780</a><br/>
-              <a href="mailto:info@renovabih.com">info@renovabih.com</a>
+              <a href="mailto:renovabih@gmail.com">renovabih@gmail.com</a>
             </address>
 
             {/* Separator dot — hidden on mobile */}
