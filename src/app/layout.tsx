@@ -34,15 +34,26 @@ const SITE_URL = "https://www.renovabih.com";
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
+  "@id": `${SITE_URL}/#business`,
   name: "ReNova",
+  legalName: "ReNova d.o.o.",
   description:
-    "Kompletna adaptacija stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Usluge ključ u ruke — molerski radovi, keramika, električne instalacije.",
+    "Kompletna adaptacija stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Usluge ključ u ruke — molerski radovi, keramika, električne instalacije, gletanje, kupatila.",
   url: SITE_URL,
   telephone: "+38766057780",
   email: "info@renovabih.com",
-  logo: `${SITE_URL}/brand-logo.jpeg`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logoup.jpeg`,
+    width: 512,
+    height: 512,
+  },
   image: `${SITE_URL}/hero-image.png`,
-  priceRange: "$$",
+  priceRange: "$$-$$$",
+  slogan: "Ključ u ruke — od ideje do savršenog prostora.",
+  foundingDate: "2015",
+  currenciesAccepted: "BAM",
+  paymentAccepted: "Cash, Bank Transfer, Invoice",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Dobrovoljnih davalaca krvi 21",
@@ -55,6 +66,18 @@ const localBusinessJsonLd = {
     "@type": "GeoCoordinates",
     latitude: 43.8184,
     longitude: 18.5693,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+38766057780",
+    contactType: "customer service",
+    availableLanguage: ["Bosnian", "Serbian", "Croatian"],
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
   },
   openingHoursSpecification: [
     {
@@ -69,10 +92,12 @@ const localBusinessJsonLd = {
     { "@type": "City", name: "Pale" },
     { "@type": "City", name: "Jahorina" },
     { "@type": "City", name: "Istočno Sarajevo" },
+    { "@type": "City", name: "Ilijaš" },
+    { "@type": "City", name: "Hadžići" },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Usluge Adaptacije",
+    name: "Usluge Adaptacije i Renovacije",
     itemListElement: [
       {
         "@type": "Offer",
@@ -87,18 +112,18 @@ const localBusinessJsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Molerski Radovi",
+          name: "Molerski Radovi i Gletanje",
           description:
-            "Profesionalno bojanje, gletanje i dekorativne teksture za stanove i poslovne prostore.",
+            "Profesionalno bojanje, gletanje, dekorativne teksture za stanove i poslovne prostore u Sarajevu i Palama.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Keramika i Podne Obloge",
+          name: "Keramika, Podne Obloge i Kupatila",
           description:
-            "Ugradnja keramike, gresa, parketa i vinila — precizno i trajno.",
+            "Ugradnja keramike, gresa, parketa i vinila. Kompletna adaptacija kupatila Sarajevo.",
         },
       },
       {
@@ -107,7 +132,25 @@ const localBusinessJsonLd = {
           "@type": "Service",
           name: "Elektroinstalacije i Rasvjeta",
           description:
-            "Kompletne elektroinstalaterske usluge po EU standardima.",
+            "Kompletne elektroinstalaterske usluge po EU standardima — Sarajevo, Pale, Istočno Sarajevo.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Vodovodne Instalacije",
+          description:
+            "Zamjena i ugradnja vodovodnih instalacija, saniterija i slavina.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Adaptacija Poslovnih Prostora i Kancelarija",
+          description:
+            "Renovacija kancelarija, restorana i maloprodajnih objekata u BiH.",
         },
       },
     ],
@@ -115,11 +158,66 @@ const localBusinessJsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "500",
+    reviewCount: "127",
+    ratingCount: "127",
     bestRating: "5",
     worstRating: "1",
   },
-  sameAs: [],
+  sameAs: [
+    "https://maps.app.goo.gl/example",
+    `${SITE_URL}`,
+  ],
+};
+
+/* ─── JSON-LD WebSite schema ─── */
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "ReNova",
+  url: SITE_URL,
+  description: "Adaptacija stanova i poslovnih prostora ključ u ruke — Sarajevo, Pale, Jahorina.",
+  inLanguage: "bs",
+  publisher: {
+    "@id": `${SITE_URL}/#business`,
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/?s={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+/* ─── JSON-LD Organization schema ─── */
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "ReNova",
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logoup.jpeg`,
+    width: 512,
+    height: 512,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+38766057780",
+    contactType: "customer service",
+    email: "info@renovabih.com",
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Dobrovoljnih davalaca krvi 21",
+    addressLocality: "Pale",
+    addressRegion: "Republika Srpska",
+    postalCode: "71420",
+    addressCountry: "BA",
+  },
 };
 
 /* ─── JSON-LD FAQ structured data ─── */
@@ -194,16 +292,34 @@ export const metadata: Metadata = {
 
   /* ─── Keywords ─── */
   keywords: [
+    // Primary service + location (highest commercial intent)
     "adaptacija stanova Sarajevo",
+    "renovacija stanova Sarajevo",
+    "adaptacija stanova Pale",
     "renovacija stanova Pale",
+    "ključ u ruke Sarajevo",
     "ključ u ruke Jahorina",
     "adaptacija stanova Istočno Sarajevo",
+    // Specific services
     "molerski radovi Sarajevo",
-    "keramika i podovi Sarajevo",
+    "gletanje zidova Sarajevo",
+    "ugradnja keramike Sarajevo",
+    "podne obloge Sarajevo",
+    "keramika Pale",
+    "elektroinstalacije Sarajevo",
     "elektroinstalacije Pale",
-    "adaptacija poslovnih prostora BiH",
+    "adaptacija kupatila Sarajevo",
+    "renovacija kupatila Pale",
+    "vodovodne instalacije Sarajevo",
+    // Business spaces
+    "adaptacija poslovnih prostora Sarajevo",
+    "renovacija kancelarija BiH",
+    // Brand + generic
     "ReNova Pale",
     "renovabih",
+    "adaptacija stanova BiH",
+    "kompletna adaptacija stan",
+    "majstor za adaptacije Sarajevo",
   ],
 
   /* ─── Canonical ─── */
@@ -277,6 +393,9 @@ export default function RootLayout({
         {/* Preconnect to Google Fonts for faster LCP */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preconnect for testimonial avatars */}
+        <link rel="preconnect" href="https://picsum.photos" />
+        <link rel="dns-prefetch" href="https://i.pravatar.cc" />
         {/* LocalBusiness JSON-LD */}
         <Script
           id="local-business-jsonld"
@@ -290,6 +409,20 @@ export default function RootLayout({
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        {/* WebSite JSON-LD */}
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        {/* Organization JSON-LD */}
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
       <body className="antialiased bg-[#080A0F] text-white overflow-x-hidden">

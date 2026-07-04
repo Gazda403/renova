@@ -361,7 +361,7 @@ const PROCESS_STEPS = [
     desc: "Koordinacija svih faza: od rušenja i instalacija do vrhunskih keramičkih i molerskih finiša uz stroge rokove.",
     preview: (
       <div className="w-full h-full relative">
-        <Image src="/step2-radovi.jpeg" alt="Izvođenje Radova" fill sizes="200px" className="object-cover" />
+        <Image src="/step2-radovi.jpeg" alt="Izvođenje adaptacije stana u Sarajevu — ReNova molerski radovi, keramika, elektroinstalacije" fill sizes="200px" className="object-cover" loading="lazy" />
       </div>
     ),
   },
@@ -371,7 +371,7 @@ const PROCESS_STEPS = [
     desc: "Finalni dekor i detaljno čišćenje. Vaša vizija je u potpunosti materijalizovana u useljivu stvarnost.",
     preview: (
       <div className="w-full h-full relative">
-        <Image src="/step3-kljuc.png" alt="Ključ u Ruke" fill sizes="200px" className="object-cover" />
+        <Image src="/step3-kljuc.png" alt="Završena adaptacija stana ključ u ruke — renoviran prostor spreman za useljivanje, ReNova Sarajevo" fill sizes="200px" className="object-cover" loading="lazy" />
       </div>
     ),
   },
