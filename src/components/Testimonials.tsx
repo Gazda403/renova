@@ -125,18 +125,18 @@ const TestimonialCard: React.FC<{ t: Testimonial }> = ({ t }) => (
       </div>
     </div>
 
-    {/* Content */}
     <p
       className="leading-relaxed text-[14.5px] flex-1"
       style={{ color: "rgba(255,255,255,0.72)", fontFamily: "var(--font-body)" }}
     >
-      "{t.content}"
+      &ldquo;{t.content}&rdquo;
     </p>
 
     {/* Author row */}
     <div className="flex items-center gap-3 pt-3"
       style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={t.avatar}
         alt={t.name}

@@ -104,7 +104,7 @@ export default function NasaMisija() {
                   className="text-2xl md:text-3xl lg:text-[2.5rem] leading-[1.3] font-light text-black/90"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  "Naša misija je da vaše snove pretvorimo u stvarnost. Od najmanjih detalja i najjednostavnijih usluga do kompleksnih projekata i potpunih adaptacija — naš cilj je da rezultat našeg rada <span className="font-semibold" style={{ color: ACCENT_BLUE }}>ostavi osmijeh na vašem licu</span>."
+                  &ldquo;Naša misija je da vaše snove pretvorimo u stvarnost. Od najmanjih detalja i najjednostavnijih usluga do kompleksnih projekata i potpunih adaptacija — naš cilj je da rezultat našeg rada <span className="font-semibold" style={{ color: ACCENT_BLUE }}>ostavi osmijeh na vašem licu</span>.&rdquo;
                 </m.h2>
               </div>
             </div>

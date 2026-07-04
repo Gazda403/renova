@@ -7,8 +7,6 @@ import {
   domMax,
   m,
   AnimatePresence,
-  useMotionValue,
-  useSpring,
   type Variants,
 } from "framer-motion";
 

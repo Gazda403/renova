@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { LazyMotion, domMax, m, AnimatePresence, type Variants } from "framer-motion";
 
