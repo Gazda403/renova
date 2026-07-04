@@ -355,6 +355,55 @@ export default function HeroSection() {
                   Kompletne usluge adaptacije stanova i poslovnih prostora u Sarajevu, Palama i Jahorini. Od ideje do useljenja ključ u ruke — vrhunski materijali, jasni rokovi i stopostotna garancija kvaliteta.
                 </m.p>
 
+                {/* CTA Button */}
+                <m.div
+                  custom={1.05}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  className="mt-2"
+                >
+                  <a
+                    href="#kontakt"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="group relative inline-flex items-center gap-3 overflow-hidden"
+                    style={{
+                      padding: "14px 28px",
+                      background: "#3B82F6",
+                      borderRadius: "10px",
+                      color: "#fff",
+                      fontFamily: "var(--font-body)",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      textDecoration: "none",
+                      boxShadow: "0 6px 28px rgba(59,130,246,0.38)",
+                    }}
+                  >
+                    {/* Animated shimmer on hover */}
+                    <span
+                      className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
+                      style={{
+                        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)",
+                      }}
+                    />
+                    <span className="relative z-10">Pošalji Besplatni Upit</span>
+                    <svg
+                      className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </a>
+                </m.div>
+
               </div>
 
               {/* ── Right Block — Scroll Indicator ── */}
