@@ -142,17 +142,48 @@ function LuxuryInput({
 ═══════════════════════════════════════════ */
 export default function ContactAndFooter() {
   const [form, setForm] = useState(EMPTY);
-  const [sent, setSent]   = useState(false);
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const set = useCallback((k: keyof typeof EMPTY) => (v: string) =>
     setForm((f) => ({ ...f, [k]: v })), []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire to real backend / form service
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm(EMPTY);
+    if (sending) return;
+
+    if (!form.name || !form.email || !form.message) {
+      setError("Molimo popunite sva obavezna polja (Ime, Email, Poruka).");
+      return;
+    }
+
+    setSending(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Došlo je do greške.");
+      }
+
+      setSent(true);
+      setForm(EMPTY);
+      setTimeout(() => setSent(false), 6000);
+    } catch (err: unknown) {
+      console.error(err);
+      const msg = err instanceof Error ? err.message : "Greška pri slanju upita. Pokušajte ponovo.";
+      setError(msg);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -429,6 +460,23 @@ export default function ContactAndFooter() {
                       />
                     </m.div>
 
+                    {/* Error message */}
+                    {error && (
+                      <m.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-6 p-4 rounded-xl text-sm font-medium"
+                        style={{
+                          background: "rgba(239, 68, 68, 0.1)",
+                          border: "1px solid rgba(239, 68, 68, 0.2)",
+                          color: "#EF4444",
+                          fontFamily: "var(--font-body)",
+                        }}
+                      >
+                        {error}
+                      </m.div>
+                    )}
+
                     {/* Action buttons */}
                     <m.div
                       custom={0.42}
@@ -438,26 +486,27 @@ export default function ContactAndFooter() {
                       {/* Primary CTA */}
                       <m.button
                         type="submit"
+                        disabled={sending}
                         className="flex-1 flex items-center justify-center gap-2 rounded-xl font-bold tracking-wider uppercase"
                         style={{
                           padding: "16px 28px",
-                          background: ACCENT,
+                          background: sending ? "rgba(59,130,246,0.5)" : ACCENT,
                           color: "#fff",
                           fontSize: 13,
                           letterSpacing: "0.14em",
                           fontFamily: "var(--font-body)",
                           border: "none",
-                          cursor: "pointer",
-                          boxShadow: `0 6px 28px ${ACCENT}44`,
+                          cursor: sending ? "not-allowed" : "pointer",
+                          boxShadow: sending ? "none" : `0 6px 28px ${ACCENT}44`,
                         }}
-                        whileHover={{
+                        whileHover={sending ? {} : {
                           scale: 1.025,
                           boxShadow: `0 10px 36px ${ACCENT}66`,
                         }}
-                        whileTap={{ scale: 0.975 }}
+                        whileTap={sending ? {} : { scale: 0.975 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
                       >
-                        <span>Pošalji Upit</span>
+                        <span>{sending ? "Slanje..." : "Pošalji Upit"}</span>
                         <ArrowRight size={15} strokeWidth={2.5} />
                       </m.button>
 
