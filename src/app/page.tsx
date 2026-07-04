@@ -1,10 +1,15 @@
-import HeroSection from "@/components/HeroSection";
+import dynamic from "next/dynamic";
+
+// Above the fold — eager static imports (critical for LCP)
+import HeroSection    from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import AboutAndTransformations from "@/components/AboutAndTransformations";
-import NasaMisija from "@/components/NasaMisija";
-import Testimonials from "@/components/Testimonials";
-import FAQSection from "@/components/FAQSection";
-import ContactAndFooter from "@/components/ContactAndFooter";
+
+// Below the fold — dynamic imports = separate JS chunks, loaded on demand
+const AboutAndTransformations = dynamic(() => import("@/components/AboutAndTransformations"));
+const NasaMisija              = dynamic(() => import("@/components/NasaMisija"));
+const Testimonials            = dynamic(() => import("@/components/Testimonials"));
+const FAQSection              = dynamic(() => import("@/components/FAQSection"));
+const ContactAndFooter        = dynamic(() => import("@/components/ContactAndFooter"));
 
 export default function Home() {
   return (
@@ -19,3 +24,4 @@ export default function Home() {
     </main>
   );
 }
+

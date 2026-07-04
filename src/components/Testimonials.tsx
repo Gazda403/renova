@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { LazyMotion, domMax, m } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
 /* ─── Brand tokens (matches site palette) ─── */
@@ -100,13 +100,11 @@ const TestimonialCard: React.FC<{ t: Testimonial }> = ({ t }) => (
   <div
     className="flex-shrink-0 flex flex-col gap-5 rounded-2xl p-7 select-none"
     style={{
-      width:        CARD_WIDTH,
-      background:   "rgba(255,255,255,0.04)",
-      border:       "1px solid rgba(255,255,255,0.09)",
-      backdropFilter: "blur(14px)",
-      WebkitBackdropFilter: "blur(14px)",
-      boxShadow:    "0 8px 40px rgba(0,0,0,0.28)",
-      cursor:       "grab",
+      width:      CARD_WIDTH,
+      background: "rgba(255,255,255,0.04)",
+      border:     "1px solid rgba(255,255,255,0.09)",
+      boxShadow:  "0 8px 40px rgba(0,0,0,0.28)",
+      cursor:     "grab",
     }}
   >
     {/* Top row — quote icon + stars */}
@@ -142,6 +140,8 @@ const TestimonialCard: React.FC<{ t: Testimonial }> = ({ t }) => (
       <img
         src={t.avatar}
         alt={t.name}
+        loading="lazy"
+        decoding="async"
         className="rounded-full shrink-0"
         style={{
           width:  44,
@@ -185,6 +185,7 @@ export default function Testimonials() {
   const constraintsRef = useRef<HTMLDivElement>(null);
 
   return (
+    <LazyMotion features={domMax} strict>
     <section
       id="utisci"
       className="relative w-full overflow-hidden"
@@ -259,7 +260,7 @@ export default function Testimonials() {
           }}
         />
 
-        <motion.div
+        <m.div
           className="flex"
           style={{ gap: CARD_GAP, paddingLeft: CARD_GAP * 2, paddingRight: CARD_GAP * 2 }}
           animate={{ x: dragging ? undefined : [`0px`, `-${TRACK_WIDTH}px`] }}
@@ -277,7 +278,7 @@ export default function Testimonials() {
           {LOOPED.map((t, i) => (
             <TestimonialCard key={`${t.id}-${i}`} t={t} />
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       {/* ── Bottom stat strip ── */}
@@ -321,6 +322,7 @@ export default function Testimonials() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </LazyMotion>
   );
 }

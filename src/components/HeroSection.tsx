@@ -7,13 +7,16 @@ import { Phone, Plus, Menu, X } from "lucide-react";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
+
+
+
 /* ─── Animation Variants ─── */
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: EASE, delay },
+    transition: { duration: 0.55, ease: EASE, delay },
   }),
 };
 
@@ -21,7 +24,7 @@ const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: (delay = 0) => ({
     opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut" as const, delay },
+    transition: { duration: 0.4, ease: "easeOut" as const, delay },
   }),
 };
 
@@ -30,7 +33,7 @@ const slideLeft: Variants = {
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.9, ease: EASE, delay },
+    transition: { duration: 0.65, ease: EASE, delay },
   }),
 };
 
@@ -39,7 +42,7 @@ const slideRight: Variants = {
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.9, ease: EASE, delay },
+    transition: { duration: 0.65, ease: EASE, delay },
   }),
 };
 
@@ -245,6 +248,13 @@ function Navbar() {
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoEnded, setVideoEnded] = useState(false);
+  // Delay video src so the hero image (LCP element) paints first.
+  const [videoSrc, setVideoSrc] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVideoSrc("/hero-video.mp4"), 1500);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <LazyMotion features={domMax} strict>
@@ -252,24 +262,25 @@ export default function HeroSection() {
 
         {/* ─── Background Media Layer ─── */}
         <div className="absolute inset-0 z-0">
-          {/* Static Hero Image — always underneath */}
+          {/* Static Hero Image — always visible on all devices */}
           <Image
             src="/hero-image.png"
             alt="Moderno renoviran stan u Sarajevu — ReNova kompletna adaptacija ključ u ruke"
             fill
             priority
-            quality={90}
+            quality={75}
             className="object-cover object-bottom md:object-center"
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, 100vw"
           />
 
-          {/* Video on top — fades out on end */}
+          {/* Video on top — fades out on end. src injected after 1.5s so hero image (LCP) paints first */}
           <m.video
             ref={videoRef}
-            src="/hero-video.mp4"
+            src={videoSrc}
             muted
             autoPlay
             playsInline
+            preload="none"
             onEnded={() => setVideoEnded(true)}
             initial={{ opacity: 1 }}
             animate={{ opacity: videoEnded ? 0 : 1 }}

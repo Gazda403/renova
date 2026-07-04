@@ -71,7 +71,7 @@ const fadeUp: Variants = {
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: EASE, delay },
+    transition: { duration: 0.6, ease: EASE, delay },
   }),
 };
 
@@ -80,7 +80,7 @@ const cardEntry: Variants = {
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.85, ease: EASE, delay },
+    transition: { duration: 0.55, ease: EASE, delay },
   }),
 };
 
@@ -191,7 +191,7 @@ function SliderCard({
             src={project.afterSrc}
             alt={project.afterAlt}
             fill
-            sizes="(max-width: 1024px) 100vw, 56vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 56vw"
             className="object-cover object-center"
             priority={index === 0}
             draggable={false}
@@ -218,7 +218,7 @@ function SliderCard({
             src={project.beforeSrc}
             alt={project.beforeAlt}
             fill
-            sizes="(max-width: 1024px) 100vw, 56vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 56vw"
             className="object-cover object-center"
             draggable={false}
           />
