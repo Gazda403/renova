@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, Bebas_Neue } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Ultra-heavy condensed display font — used for the giant "RENOVA" heading
@@ -427,6 +428,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-[#080A0F] text-white overflow-x-hidden">
         {children}
+        <Analytics />
       </body>
     </html>
   );
