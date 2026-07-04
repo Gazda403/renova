@@ -557,52 +557,122 @@ export default function ContactAndFooter() {
                   </form>
                 )}
 
-                {/* Instagram Link Section */}
+                {/* Social Links Section */}
                 <div className="w-full h-px my-6" style={{ background: "rgba(255,255,255,0.06)" }} />
                 <m.div
                   custom={0.54}
                   variants={fadeIn}
-                  className="flex flex-col sm:flex-row items-center justify-between gap-4"
+                  className="flex flex-col gap-4"
                 >
                   <span
-                    className="text-[12px] font-medium text-white/40 uppercase tracking-widest"
+                    className="text-[12px] font-medium text-white/40 uppercase tracking-widest text-center sm:text-left"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Pratite naše radove uživo
+                    Pratite naše radove na društvenim mrežama
                   </span>
-                  <a
-                    href="https://www.instagram.com/renova_bih/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-xl transition-all duration-300 w-full sm:w-auto justify-center"
-                    style={{
-                      padding: "10px 18px",
-                      background: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      color: "#fff",
-                      fontSize: 12,
-                      fontFamily: "var(--font-body)",
-                      letterSpacing: "0.08em",
-                      fontWeight: 600,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)";
-                      e.currentTarget.style.borderColor = "transparent";
-                      e.currentTarget.style.boxShadow = "0 8px 24px rgba(220, 39, 67, 0.35)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <svg width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                    <span>@renova_bih</span>
-                  </a>
+                  
+                  <div className="flex flex-wrap items-center gap-3 w-full">
+                    {/* Instagram */}
+                    <a
+                      href="https://www.instagram.com/renova_bih/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 min-w-[120px] flex items-center gap-2 rounded-xl transition-all duration-300 justify-center"
+                      style={{
+                        padding: "10px 16px",
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#fff",
+                        fontSize: 12,
+                        fontFamily: "var(--font-body)",
+                        letterSpacing: "0.05em",
+                        fontWeight: 600,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)";
+                        e.currentTarget.style.borderColor = "transparent";
+                        e.currentTarget.style.boxShadow = "0 8px 24px rgba(220, 39, 67, 0.35)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    >
+                      <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                      </svg>
+                      <span>Instagram</span>
+                    </a>
+
+                    {/* TikTok */}
+                    <a
+                      href="https://www.tiktok.com/@renovabih"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 min-w-[120px] flex items-center gap-2 rounded-xl transition-all duration-300 justify-center"
+                      style={{
+                        padding: "10px 16px",
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#fff",
+                        fontSize: 12,
+                        fontFamily: "var(--font-body)",
+                        letterSpacing: "0.05em",
+                        fontWeight: 600,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#000000";
+                        e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.15)";
+                        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.65), 0 0 8px rgba(0,242,234,0.3), 0 0 8px rgba(254,44,85,0.3)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    >
+                      <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                      </svg>
+                      <span>TikTok</span>
+                    </a>
+
+                    {/* Facebook */}
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61580515091094&locale=sr_RS"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 min-w-[120px] flex items-center gap-2 rounded-xl transition-all duration-300 justify-center"
+                      style={{
+                        padding: "10px 16px",
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#fff",
+                        fontSize: 12,
+                        fontFamily: "var(--font-body)",
+                        letterSpacing: "0.05em",
+                        fontWeight: 600,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#1877F2";
+                        e.currentTarget.style.borderColor = "transparent";
+                        e.currentTarget.style.boxShadow = "0 8px 24px rgba(24, 119, 242, 0.35)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    >
+                      <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                      </svg>
+                      <span>Facebook</span>
+                    </a>
+                  </div>
                 </m.div>
               </m.div>
             </m.div>
