@@ -58,6 +58,26 @@ const PROJECTS: SliderProject[] = [
     beforeAlt: "Pod prije ugradnje keramike — stara obloga Sarajevo",
     afterAlt:  "Premium keramika i mramorni pod poslije ugradnje — ReNova Jahorina",
   },
+  {
+    id:        "enterijer",
+    category:  "04 — KOMPLETNA ADAPTACIJA",
+    title:     "Enterijer / Renovacija",
+    subtitle:  "Modernizacija stambenog prostora",
+    beforeSrc: "/seg4-before.jpg",
+    afterSrc:  "/seg4-after.jpeg",
+    beforeAlt: "Prostor prije renovacije",
+    afterAlt:  "Prostor nakon renovacije — ReNova ključ u ruke",
+  },
+  {
+    id:        "kupatilo",
+    category:  "05 — LUKSUZNA KUPATILA",
+    title:     "Kupatila / Keramika",
+    subtitle:  "Ekskluzivno opremanje i dizajn",
+    beforeSrc: "/seg5-before.jpg",
+    afterSrc:  "/seg5-after.jpeg",
+    beforeAlt: "Kupatilo prije adaptacije",
+    afterAlt:  "Luksuzno kupatilo poslije adaptacije — ReNova",
+  },
 ];
 
 /* ─── Framer Motion variants ─── */
