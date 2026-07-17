@@ -69,14 +69,14 @@ const PROJECTS: SliderProject[] = [
     afterAlt:  "Prostor nakon renovacije — ReNova ključ u ruke",
   },
   {
-    id:        "kupatilo",
-    category:  "05 — LUKSUZNA KUPATILA",
-    title:     "Kupatila / Keramika",
-    subtitle:  "Ekskluzivno opremanje i dizajn",
+    id:        "spavaca-soba",
+    category:  "05 — SPAVAĆA SOBA",
+    title:     "Spavaća Soba",
+    subtitle:  "Elegantno uređenje",
     beforeSrc: "/seg5-before.jpg",
     afterSrc:  "/seg5-after.jpeg",
-    beforeAlt: "Kupatilo prije adaptacije",
-    afterAlt:  "Luksuzno kupatilo poslije adaptacije — ReNova",
+    beforeAlt: "Spavaća soba prije adaptacije",
+    afterAlt:  "Moderna spavaća soba poslije adaptacije — ReNova",
   },
 ];
 
