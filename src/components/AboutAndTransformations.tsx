@@ -582,14 +582,16 @@ export default function AboutAndTransformations() {
             {/* ══════════════════════════════
                 LEFT COLUMN — sticky text panel
             ══════════════════════════════ */}
-            <div className="lg:col-span-5 lg:sticky lg:top-24 h-fit">
-              <m.div
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.25 }}
-                className="flex flex-col gap-9"
-              >
+            <div className="lg:col-span-5 flex flex-col h-full">
+              <div className="flex-1">
+                <div className="lg:sticky lg:top-24 h-fit pb-12">
+                  <m.div
+                    variants={sectionVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.25 }}
+                    className="flex flex-col gap-9"
+                  >
                 {/* Label */}
                 <m.div custom={0} variants={fadeUp} className="flex items-center gap-3">
                   <div
@@ -716,15 +718,27 @@ export default function AboutAndTransformations() {
                   <ProcessTimeline />
                 </m.div>
               </m.div>
+                </div>
+              </div>
+
+              {/* Card 5 on left for desktop */}
+              <div className="hidden lg:block mt-8">
+                <SliderCard project={PROJECTS[4]} index={4} />
+              </div>
             </div>
 
             {/* ══════════════════════════════
                 RIGHT COLUMN — slider cards
             ══════════════════════════════ */}
             <div className="lg:col-span-7 flex flex-col gap-6 lg:gap-8">
-              {PROJECTS.map((project, i) => (
+              {PROJECTS.slice(0, 4).map((project, i) => (
                 <SliderCard key={project.id} project={project} index={i} />
               ))}
+
+              {/* Card 5 on bottom for mobile */}
+              <div className="block lg:hidden">
+                <SliderCard project={PROJECTS[4]} index={4} />
+              </div>
             </div>
 
           </div>
