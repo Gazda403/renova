@@ -37,11 +37,10 @@ const scaleIn: Variants = {
 
 /* ─── Contact meta items ─── */
 const META = [
-  { Icon: Phone,  label: "Telefon",       value: "+387 66 057 780",       href: "tel:+38766057780" },
-  { Icon: Phone,  label: "Telefon",       value: "+387 65 449 068",       href: "tel:+38765449068" },
-  { Icon: Mail,   label: "Email",         value: "renovabih@gmail.com",    href: "mailto:renovabih@gmail.com" },
-  { Icon: Clock,  label: "Radno Vrijeme", value: "Pon–Pet  08:00 — 18:00", href: null },
-  { Icon: MapPin, label: "Lokacija",      value: "Dobrovoljnih davalaca krvi 21, Pale", href: "https://maps.google.com/?q=Dobrovoljnih+davalaca+krvi+21,+Pale" },
+  { Icon: Phone,  label: "Telefon",       values: [{ v: "+387 66 057 780", href: "tel:+38766057780" }, { v: "+387 65 449 068", href: "tel:+38765449068" }] },
+  { Icon: Mail,   label: "Email",         values: [{ v: "renovabih@gmail.com", href: "mailto:renovabih@gmail.com" }] },
+  { Icon: Clock,  label: "Radno Vrijeme", values: [{ v: "Pon–Pet  08:00 — 18:00", href: null }] },
+  { Icon: MapPin, label: "Lokacija",      values: [{ v: "Dobrovoljnih davalaca krvi 21, Pale", href: "https://maps.google.com/?q=Dobrovoljnih+davalaca+krvi+21,+Pale" }] },
 ];
 
 /* ─── Empty form state ─── */
@@ -270,7 +269,7 @@ export default function ContactAndFooter() {
 
               {/* Contact meta */}
               <m.div custom={0.2} variants={fadeUp} className="flex flex-col gap-0">
-                {META.map(({ Icon, label, value, href }, i) => (
+                {META.map(({ Icon, label, values }, i) => (
                   <div
                     key={`${label}-${i}`}
                     className="flex items-start gap-4 py-4"
@@ -297,34 +296,40 @@ export default function ContactAndFooter() {
                       >
                         {label}
                       </span>
-                      {href ? (
-                        <a
-                          href={href}
-                          target={href.startsWith("http") ? "_blank" : undefined}
-                          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-[14px] font-light transition-colors duration-200"
-                          style={{
-                            color: "rgba(255,255,255,0.8)",
-                            fontFamily: "var(--font-body)",
-                            letterSpacing: "0.01em",
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
-                        >
-                          {value}
-                        </a>
-                      ) : (
-                        <span
-                          className="text-[14px] font-light"
-                          style={{
-                            color: "rgba(255,255,255,0.8)",
-                            fontFamily: "var(--font-body)",
-                            letterSpacing: "0.01em",
-                          }}
-                        >
-                          {value}
-                        </span>
-                      )}
+                      <div className="flex flex-col gap-0.5">
+                        {values.map(({ v, href }) =>
+                          href ? (
+                            <a
+                              key={v}
+                              href={href}
+                              target={href.startsWith("http") ? "_blank" : undefined}
+                              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="text-[14px] font-light transition-colors duration-200"
+                              style={{
+                                color: "rgba(255,255,255,0.8)",
+                                fontFamily: "var(--font-body)",
+                                letterSpacing: "0.01em",
+                              }}
+                              onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
+                              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+                            >
+                              {v}
+                            </a>
+                          ) : (
+                            <span
+                              key={v}
+                              className="text-[14px] font-light"
+                              style={{
+                                color: "rgba(255,255,255,0.8)",
+                                fontFamily: "var(--font-body)",
+                                letterSpacing: "0.01em",
+                              }}
+                            >
+                              {v}
+                            </span>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
