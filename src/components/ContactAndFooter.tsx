@@ -38,6 +38,7 @@ const scaleIn: Variants = {
 /* ─── Contact meta items ─── */
 const META = [
   { Icon: Phone,  label: "Telefon",       value: "+387 66 057 780",       href: "tel:+38766057780" },
+  { Icon: Phone,  label: "Telefon",       value: "+387 65 449 068",       href: "tel:+38765449068" },
   { Icon: Mail,   label: "Email",         value: "renovabih@gmail.com",    href: "mailto:renovabih@gmail.com" },
   { Icon: Clock,  label: "Radno Vrijeme", value: "Pon–Pet  08:00 — 18:00", href: null },
   { Icon: MapPin, label: "Lokacija",      value: "Dobrovoljnih davalaca krvi 21, Pale", href: "https://maps.google.com/?q=Dobrovoljnih+davalaca+krvi+21,+Pale" },
@@ -271,7 +272,7 @@ export default function ContactAndFooter() {
               <m.div custom={0.2} variants={fadeUp} className="flex flex-col gap-0">
                 {META.map(({ Icon, label, value, href }, i) => (
                   <div
-                    key={label}
+                    key={`${label}-${i}`}
                     className="flex items-start gap-4 py-4"
                     style={{
                       borderBottom: i < META.length - 1
@@ -718,6 +719,7 @@ export default function ContactAndFooter() {
             <address className="sr-only">
               ReNova — Dobrovoljnih davalaca krvi 21, Pale, Bosna i Hercegovina<br/>
               <a href="tel:+38766057780">+387 66 057 780</a><br/>
+              <a href="tel:+38765449068">+387 65 449 068</a><br/>
               <a href="mailto:renovabih@gmail.com">renovabih@gmail.com</a>
             </address>
 

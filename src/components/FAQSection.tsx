@@ -12,7 +12,7 @@ const EASE: [number, number, number, number] = [0.25, 1, 0.5, 1];
 const FAQS = [
   {
     q: "Koliko košta adaptacija stana u Sarajevu?",
-    a: "Cijena adaptacije stana u Sarajevu ovisi o veličini prostora, obimu radova i odabranim materijalima. Kompletna adaptacija \"ključ u ruke\" za stan površine 60 m² kreće se od 25.000 KM naviše. Nudimo besplatnu procjenu i detaljnu ponudu bez obaveza — kontaktirajte nas na +387 66 057 780.",
+    a: "Cijena adaptacije stana u Sarajevu ovisi o veličini prostora, obimu radova i odabranim materijalima. Kompletna adaptacija \"ključ u ruke\" za stan površine 60 m² kreće se od 25.000 KM naviše. Nudimo besplatnu procjenu i detaljnu ponudu bez obaveza — kontaktirajte nas na +387 66 057 780 ili +387 65 449 068.",
   },
   {
     q: "Da li radite adaptacije u Palama, Jahorini i Istočnom Sarajevu?",

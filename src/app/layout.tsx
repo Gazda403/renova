@@ -41,7 +41,7 @@ const localBusinessJsonLd = {
   description:
     "Kompletna adaptacija stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Usluge ključ u ruke — molerski radovi, keramika, električne instalacije, gletanje, kupatila.",
   url: SITE_URL,
-  telephone: "+38766057780",
+  telephone: ["+38766057780", "+38765449068"],
   email: "info@renovabih.com",
   logo: {
     "@type": "ImageObject",
@@ -70,7 +70,7 @@ const localBusinessJsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+38766057780",
+    telephone: ["+38766057780", "+38765449068"],
     contactType: "customer service",
     availableLanguage: ["Bosnian", "Serbian", "Croatian"],
     hoursAvailable: {
@@ -207,7 +207,7 @@ const organizationJsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+38766057780",
+    telephone: ["+38766057780", "+38765449068"],
     contactType: "customer service",
     email: "info@renovabih.com",
   },
@@ -231,7 +231,7 @@ const faqJsonLd = {
       name: "Koliko košta adaptacija stana u Sarajevu?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cijena adaptacije stana u Sarajevu ovisi o veličini prostora i obimu radova. Kompletna adaptacija ključ u ruke za stan od 60 m² kreće se od 25.000 KM naviše. Nudimo besplatnu procjenu na +387 66 057 780.",
+        text: "Cijena adaptacije stana u Sarajevu ovisi o veličini prostora i obimu radova. Kompletna adaptacija ključ u ruke za stan od 60 m² kreće se od 25.000 KM naviše. Nudimo besplatnu procjenu na +387 66 057 780 ili +387 65 449 068.",
       },
     },
     {
@@ -289,7 +289,7 @@ export const metadata: Metadata = {
 
   /* ─── Meta description ─── */
   description:
-    "ReNova izvodi kompletnu adaptaciju stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Ključ u ruke rješenje — molerski radovi, keramika, elektrika. Besplatna procjena: +387 66 057 780.",
+    "ReNova izvodi kompletnu adaptaciju stanova i poslovnih prostora u Sarajevu, Palama, Jahorini i Istočnom Sarajevu. Ključ u ruke rješenje — molerski radovi, keramika, elektrika. Besplatna procjena: +387 66 057 780 ili +387 65 449 068.",
 
   /* ─── Keywords ─── */
   keywords: [
