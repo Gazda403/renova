@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, Bebas_Neue } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -398,31 +397,23 @@ export default function RootLayout({
         <link rel="preconnect" href="https://picsum.photos" />
         <link rel="dns-prefetch" href="https://i.pravatar.cc" />
         {/* LocalBusiness JSON-LD */}
-        <Script
-          id="local-business-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         {/* FAQ JSON-LD */}
-        <Script
-          id="faq-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {/* WebSite JSON-LD */}
-        <Script
-          id="website-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {/* Organization JSON-LD */}
-        <Script
-          id="organization-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
