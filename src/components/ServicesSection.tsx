@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import {
   LazyMotion,
@@ -374,15 +374,23 @@ function ExpandedPanel({ service }: { service: Service }) {
 export default function ServicesSection() {
   const [activeId, setActiveId] = useState<string>(SERVICES[0].id);
   const [orbitRotation, setOrbitRotation] = useState<number>(TARGET_ANGLE - SERVICES[0].angle);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
 
   const activeService = SERVICES.find((s) => s.id === activeId)!;
 
   function handleServiceClick(service: Service) {
-    if (service.id === activeId) return;
-    const desiredRotation = TARGET_ANGLE - service.angle;
-    const delta = shortestDelta(orbitRotation, desiredRotation);
-    setOrbitRotation(orbitRotation + delta);
-    setActiveId(service.id);
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+    
+    if (service.id !== activeId) {
+      const desiredRotation = TARGET_ANGLE - service.angle;
+      const delta = shortestDelta(orbitRotation, desiredRotation);
+      setOrbitRotation(orbitRotation + delta);
+      setActiveId(service.id);
+    }
+
+    if (isMobile) {
+      mobilePanelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   return (
@@ -605,7 +613,7 @@ export default function ServicesSection() {
 
         {/* ─── MOBILE LAYOUT ─── */}
         <div className="lg:hidden px-5 pb-20">
-          <div className="mb-8">
+          <div className="mb-8 scroll-mt-6" ref={mobilePanelRef}>
             <AnimatePresence mode="wait">
               <ExpandedPanel key={activeId} service={activeService} />
             </AnimatePresence>
